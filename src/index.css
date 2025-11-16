@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+.hero-gradient { background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); }
+.nav-link { position: relative; }
+.nav-link::after { content:""; position:absolute; left:0; bottom:-2px; height:2px; width:0; background:#10b981; transition:width .25s; }
+.nav-link:hover::after { width:100%; }
