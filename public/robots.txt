@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://superasymmetry.org/sitemap.xml
