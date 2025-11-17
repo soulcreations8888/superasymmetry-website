@@ -307,7 +307,8 @@ function CitationView({ onBack }: { onBack: () => void }) {
 
         <p className="mb-4 text-lg text-slate-700">
           Below is the recommended citation for referencing the Superasymmetric
-          Multiverse framework.
+          Multiverse framework. You can use the plain-text format or the BibTeX
+          entry, depending on your requirements.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-3">
@@ -315,11 +316,7 @@ function CitationView({ onBack }: { onBack: () => void }) {
         </h2>
 
         <pre className="bg-slate-100 p-4 rounded text-sm whitespace-pre-wrap">
-          Kevin Depeauw (2025).{" "}
-          <i>
-            The Superasymmetric Multiverse: A Structural Framework for Reality
-          </i>
-          . superasymmetry.org/paper.pdf
+          {`Kevin Depeauw (2025). The Superasymmetric Multiverse: A Structural Framework for Reality. Zenodo. DOI: 10.5281/zenodo.17632333. https://doi.org/10.5281/zenodo.17632333`}
         </pre>
 
         <h2 className="text-2xl font-semibold mt-8 mb-3">BibTeX</h2>
@@ -328,11 +325,12 @@ function CitationView({ onBack }: { onBack: () => void }) {
           {`@article{Depeauw2025Superasymmetric,
   author    = {Kevin Depeauw},
   title     = {The Superasymmetric Multiverse: A Structural Framework for Reality},
-  journal   = {Superasymmetry.org},
+  journal   = {Zenodo},
   year      = {2025},
   month     = {11},
   note      = {Preprint},
-  url       = {https://superasymmetry.org/paper.pdf}
+  doi       = {10.5281/zenodo.17632333},
+  url       = {https://doi.org/10.5281/zenodo.17632333}
 }`}
         </pre>
       </div>
