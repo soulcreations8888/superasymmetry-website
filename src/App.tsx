@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Layout from "./components/Layout";
 
-type View = "home" | "paper";
+type View = "home" | "paper" | "citation";
 
 /** Smooth scrolling for anchor links on the home view */
 function useHashScroll(enable: boolean) {
@@ -21,8 +21,14 @@ function useHashScroll(enable: boolean) {
   }, [enable]);
 }
 
-/** HOME / ONE-PAGER VIEW (hero + about + ideas + contact) */
-function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
+/** HOME VIEW */
+function HomeView({
+  onReadPaper,
+  onGoCitation,
+}: {
+  onReadPaper: () => void;
+  onGoCitation: () => void;
+}) {
   return (
     <>
       {/* HERO */}
@@ -36,17 +42,21 @@ function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
           <h1 className="text-4xl md:text-5xl font-bold">
             The Superasymmetric Multiverse
           </h1>
+
+          {/* ✨ Corrected tagline */}
           <p className="text-lg md:text-xl max-w-3xl mx-auto mt-4 opacity-95">
-            A structural physics framework by{" "}
+            A structural framework for reality by{" "}
             <span className="font-semibold">Kevin Depeauw</span>.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
             <button
               onClick={onReadPaper}
               className="bg-white text-blue-700 hover:bg-slate-100 font-semibold py-3 px-6 rounded-lg"
             >
               Read Paper
             </button>
+
             <a
               href="/paper.pdf"
               download
@@ -54,6 +64,13 @@ function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
             >
               Download PDF
             </a>
+
+            <button
+              onClick={onGoCitation}
+              className="bg-slate-100 text-slate-900 hover:bg-white font-semibold py-3 px-6 rounded-lg"
+            >
+              Citation
+            </button>
           </div>
         </div>
       </section>
@@ -136,9 +153,8 @@ function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
               </div>
               <p className="text-slate-700 mt-2 text-sm">
                 Potential becomes structure when the field aligns through
-                recognition and resonance. Conscious focus and observation act
-                as stabilizing influences, guiding unresolved asymmetry toward
-                coherent form.
+                recognition and resonance. Observation acts as a stabilizing
+                influence, guiding unresolved asymmetry toward coherent form.
               </p>
             </div>
 
@@ -174,14 +190,14 @@ function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
                 The Observer Is Part of the Field
               </div>
               <p className="text-slate-700 mt-2 text-sm">
-                Perception, measurement, and awareness interact directly with
-                the field and influence coherence. The observer participates
-                structurally and helps shape outcomes through resonance and
+                Perception, measurement, and awareness interact structurally
+                with the field and influence coherence. The observer
+                participates directly in shaping outcomes through resonance and
                 alignment.
               </p>
             </div>
 
-            {/* IDEA 6 — CARBON */}
+            {/* IDEA 6 */}
             <div className="p-6 rounded-xl bg-slate-50 border">
               <div className="font-semibold">
                 Carbon (666) — The Basis of Material Structure
@@ -189,8 +205,8 @@ function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
               <p className="text-slate-700 mt-2 text-sm">
                 6 electrons, 6 protons, 6 neutrons — the atomic structure of
                 carbon. The first stable asymmetric pattern of matter, forming
-                the template for material structure and the foundation of
-                physical form within this construct.
+                the template for the material construct and the foundation of
+                physical form.
               </p>
             </div>
           </div>
@@ -223,7 +239,7 @@ function HomeView({ onReadPaper }: { onReadPaper: () => void }) {
   );
 }
 
-/** FULL PAPER VIEW (separate page with back button, iframe reader) */
+/** PAPER VIEW */
 function PaperView({ onBack }: { onBack: () => void }) {
   return (
     <section className="py-8 md:py-12 bg-slate-50 min-h-[calc(100vh-4rem)]">
@@ -275,20 +291,76 @@ function PaperView({ onBack }: { onBack: () => void }) {
   );
 }
 
+/** CITATION VIEW */
+function CitationView({ onBack }: { onBack: () => void }) {
+  return (
+    <section className="py-8 md:py-12 bg-slate-50 min-h-[calc(100vh-4rem)]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <button
+          onClick={onBack}
+          className="mb-6 inline-flex items-center text-blue-700 hover:text-blue-900 text-sm font-medium"
+        >
+          <span className="mr-2 text-lg">←</span> Back to overview
+        </button>
+
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">Cite This Work</h1>
+
+        <p className="mb-4 text-lg text-slate-700">
+          Below is the recommended citation for referencing the Superasymmetric
+          Multiverse framework.
+        </p>
+
+        <h2 className="text-2xl font-semibold mt-8 mb-3">
+          Recommended Citation (Text)
+        </h2>
+
+        <pre className="bg-slate-100 p-4 rounded text-sm whitespace-pre-wrap">
+          Kevin Depeauw (2025).{" "}
+          <i>
+            The Superasymmetric Multiverse: A Structural Framework for Reality
+          </i>
+          . superasymmetry.org/paper.pdf
+        </pre>
+
+        <h2 className="text-2xl font-semibold mt-8 mb-3">BibTeX</h2>
+
+        <pre className="bg-slate-100 p-4 rounded text-sm whitespace-pre-wrap">
+          {`@article{Depeauw2025Superasymmetric,
+  author    = {Kevin Depeauw},
+  title     = {The Superasymmetric Multiverse: A Structural Framework for Reality},
+  journal   = {Superasymmetry.org},
+  year      = {2025},
+  month     = {11},
+  note      = {Preprint},
+  url       = {https://superasymmetry.org/paper.pdf}
+}`}
+        </pre>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [view, setView] = useState<View>("home");
 
-  // enable smooth hash scrolling only on the home view
   useHashScroll(view === "home");
 
   return (
-    <Layout>
-      {view === "home" ? (
-        <HomeView onReadPaper={() => setView("paper")} />
-      ) : (
-        <PaperView onBack={() => setView("home")} />
+    <Layout
+      onNavHome={() => setView("home")}
+      onNavPaper={() => setView("paper")}
+      onNavCitation={() => setView("citation")}
+    >
+      {view === "home" && (
+        <HomeView
+          onReadPaper={() => setView("paper")}
+          onGoCitation={() => setView("citation")}
+        />
       )}
-      {/* FOOTER */}
+      {view === "paper" && <PaperView onBack={() => setView("home")} />}
+      {view === "citation" && <CitationView onBack={() => setView("home")} />}
+
+      {/* FOOTER stays as you have it */}
       <footer className="bg-slate-900 text-slate-300 py-6 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm leading-relaxed">
           <p>© 2025 Kevin Depeauw. All rights reserved.</p>
