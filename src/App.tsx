@@ -288,6 +288,21 @@ export default function App() {
       ) : (
         <PaperView onBack={() => setView("home")} />
       )}
+      {/* FOOTER */}
+      <footer className="bg-slate-900 text-slate-300 py-6 mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm leading-relaxed">
+          <p>© 2025 Kevin Depeauw. All rights reserved.</p>
+          <p className="mt-1">
+            Patent pending. All theoretical constructs, terminology, and
+            diagrams associated with the Superasymmetric Multiverse are the
+            intellectual property of Kevin Depeauw.
+          </p>
+          <p className="mt-1">
+            This work may be shared for non-commercial research, discussion, and
+            educational use, provided proper credit is given.
+          </p>
+        </div>
+      </footer>
     </Layout>
   );
 }
